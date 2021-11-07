@@ -79,4 +79,12 @@ interface IERC20 {
      * a call to {approve}. `value` is the new allowance.
      */
     event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    /**
+     * @dev Emitted when a transfer is made from a `owner` to the zero address
+     * which will burn the tokens
+     */
+    event Burn(address indexed owner, uint256 value);
+
+
 }

@@ -3,8 +3,6 @@
  */
 
  require(`@nomiclabs/hardhat-waffle`);
- require(`hardhat-gas-reporter`);
- 
  // https://hardhat.org/config/
  module.exports = {
      defaultNetwork: `hardhat`,

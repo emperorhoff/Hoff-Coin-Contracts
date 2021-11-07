@@ -38,12 +38,18 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * All of these values are immutable: they can only be set once during
      * construction.
      */
-    constructor(string memory name_, string memory symbol_, uint8 memory decimals_, uint256 memory supply_, address memory mintAddress_) {
-        _name = name_;
-        _symbol = symbol_;
-        _decimals = decimals_;
-        _balances[mintAddress_] = supply_;
-        _totalSupply = supply_;
+    constructor(
+        string memory name_, 
+        string memory symbol_, 
+        uint8 decimals_, 
+        uint256 supply_, 
+        address mintAddress_
+        ) {
+            _name = name_;
+            _symbol = symbol_;
+            _decimals = decimals_;
+            _balances[mintAddress_] = supply_;
+            _totalSupply = supply_;
     }
 
     /**
@@ -157,12 +163,13 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * This internal function is equivalent to {transfer}, and can be used to
      * e.g. implement automatic token fees, slashing mechanisms, etc.
      *
+     * If the token is sent to the zero address it is simply burned
+     *
      * Emits a {Transfer} event.
      *
      * Requirements:
      *
      * - `sender` cannot be the zero address.
-     * - `recipient` cannot be the zero address.
      * - `sender` must have a balance of at least `amount`.
      */
     function _transfer(
@@ -171,10 +178,15 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         uint256 amount
     ) internal virtual {
         require(sender != address(0), "ERC20:_transfer: cannot transfer from the zero address");
-        require(recipient != address(0), "ERC20:_tranfser: cannot transfer to the zero address");
-
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20:_tranfser: amount exceeds balance");
+
+        if(recipient == address(0)) {
+            _balances[sender] = senderBalance - amount;
+            _totalSupply = _totalSupply - amount;
+            emit Burn(sender, amount);
+            break;
+        }
         _balances[sender] = senderBalance - amount;
         _balances[recipient] += amount;
 
