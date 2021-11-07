@@ -4,6 +4,13 @@ This project implements the base Hoff Coin ERC20 contract. It uses hardhat, waff
 
 # Hoffcoin Contract Structures
 
+Contract inheritence graph
+[Contract inheritence graph](graphs/Contract-Inheritence.png)
+
+Contract interaction graph
+[Contract interaction graph](graphs/Contract-Interactions.png)
+
+
 # Prerequesites
 In order to compile, test and deploy the project using hardhat, the following dependencies will need to be installed:
 - node 12
