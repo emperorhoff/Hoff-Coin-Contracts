@@ -3,7 +3,7 @@
  */
  require("@nomiclabs/hardhat-etherscan");
  require("solidity-coverage");
- require(`@nomiclabs/hardhat-waffle`);
+ require("@nomiclabs/hardhat-waffle");
  // https://hardhat.org/config/
  module.exports = {
      defaultNetwork: `hardhat`,
@@ -19,6 +19,11 @@
              chainId: 4,
              url: "https://eth-rinkeby.alchemyapi.io/v2/lpyqWJSI2iubqKojrorkO-ixU6EoPTHi",
              accounts: [`40512c1f3b29840c7c61065e46a78227aa9a8c5ab9ca610a91b73a41cd88f95d`, `40512c1f3b29840c7c61065e46a78227aa9a8c5ab9ca610a91b73a41cd88f94d`]
+         },
+         mainnet: {
+             chainId: 1,
+             url: "https://eth-mainnet.alchemyapi.io/v2/9EaCL_TBLgJco7-VDR_-MxMTvYhJeEQS",
+             accounts: [`private_key_here`]
          }             
      },
      etherscan: {
@@ -30,7 +35,7 @@
                  version: `0.8.9`,
                  settings: {
                      optimizer: {
-                         enabled: false,
+                         enabled: true,
                          runs: 0
                      },
                      metadata: {
