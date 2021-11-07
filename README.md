@@ -46,7 +46,7 @@ npx hardhat run scripts/deploy.js
 npx hardhat run scripts/deploy.js --network rinkeby
 ```
 
-in order to deploy the contract on the mainnet, first edit the file hardhat.config.js to input your private key in the space on line 26
+in order to deploy the contract on the mainnet, first edit the file hardhat.config.js to input your private key in 'accounts' space on line 26
 then run the following command
 
 ```shell
