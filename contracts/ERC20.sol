@@ -138,7 +138,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      *
      * Requirements:
      *
-     * - `sender` and `recipient` cannot be the zero address.
+     * - `sender` cannot be the zero address.
      * - `sender` must have a balance of at least `amount`.
      * - the caller must have allowance for ``sender``'s tokens of at least
      * `amount`.
@@ -181,17 +181,17 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20:_tranfser: amount exceeds balance");
 
-        if(recipient == address(0)) {
+        if (recipient == address(0)) {
             _balances[sender] = senderBalance - amount;
             _totalSupply = _totalSupply - amount;
             emit Burn(sender, amount);
-            break;
+
+        } else if (recipient != address(0)) {
+
+            _balances[sender] = senderBalance - amount;
+            _balances[recipient] += amount;
+            emit Transfer(sender, recipient, amount);
         }
-        _balances[sender] = senderBalance - amount;
-        _balances[recipient] += amount;
-
-        emit Transfer(sender, recipient, amount);
-
     }
 
     /**

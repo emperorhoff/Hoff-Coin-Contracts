@@ -1,7 +1,7 @@
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
-
+ require("@nomiclabs/hardhat-etherscan");
  require(`@nomiclabs/hardhat-waffle`);
  // https://hardhat.org/config/
  module.exports = {
@@ -13,7 +13,15 @@
              accounts: {
                  count: 250
              }
-         }
+         },
+         rinkeby: {
+             chainId: 4,
+             url: "https://eth-rinkeby.alchemyapi.io/v2/lpyqWJSI2iubqKojrorkO-ixU6EoPTHi",
+             accounts: [`40512c1f3b29840c7c61065e46a78227aa9a8c5ab9ca610a91b73a41cd88f95d`, `40512c1f3b29840c7c61065e46a78227aa9a8c5ab9ca610a91b73a41cd88f94d`]
+         }             
+     },
+     etherscan: {
+        apiKey: "FICAAGUI1YVXRTYYVEF9ERXBFNE2KIK4D3"
      },
      solidity: {
          compilers: [
@@ -21,8 +29,8 @@
                  version: `0.8.9`,
                  settings: {
                      optimizer: {
-                         enabled: true,
-                         runs: 800
+                         enabled: false,
+                         runs: 0
                      },
                      metadata: {
                          // do not include the metadata hash, since this is machine dependent
