@@ -184,6 +184,7 @@ contract ERC20 is IERC20, IERC20Metadata {
             _balances[sender] = senderBalance - amount;
             _totalSupply = _totalSupply - amount;
             emit Burn(sender, amount);
+            emit Transfer(sender, address(0), amount);
 
         } else if (recipient != address(0)) {
 
