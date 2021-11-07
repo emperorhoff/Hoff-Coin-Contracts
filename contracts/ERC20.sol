@@ -203,7 +203,6 @@ contract ERC20 is IERC20, IERC20Metadata {
      *
      * Requirements:
      *
-     * - `owner` cannot be the zero address.
      * - `spender` cannot be the zero address.
      */
     function _approve(
@@ -211,7 +210,6 @@ contract ERC20 is IERC20, IERC20Metadata {
         address spender,
         uint256 amount
     ) internal virtual {
-        require(owner != address(0), "ERC20:_approve: cannot approve from the zero address");
         require(spender != address(0), "ERC20:_approve: cannot approve to the zero address");
 
         _allowances[owner][spender] = amount;

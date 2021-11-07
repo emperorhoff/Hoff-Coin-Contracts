@@ -24,7 +24,7 @@ beforeEach(async function () {
     // Get the ContractFactory and Signers here.
     [owner, address1, address2, address3, address4] = await ethers.getSigners();
     
-    hoffCoinToken = await deployment(`HoffCoinBase`, owner, ["Hoff Coin", "HOFF", "8", "1000000000000000000", owner.address]);
+    hoffCoinToken = await deployment(`HoffCoinConfig`, owner, ["Hoff Coin", "HOFF", "8", "1000000000000000000", owner.address]);
   });
 
   describe("Token contract", function () {
@@ -93,7 +93,7 @@ beforeEach(async function () {
         const address2Allowance = await hoffCoinToken.allowance(owner.address, address2.address);
         await expect(address2Allowance.toString()).to.equal("1000");
       });
-
+ 
       it("decrements allowance by amount of transferFrom", async function () {
         await expect(hoffCoinToken.approve(address2.address, 1000)).to.emit(hoffCoinToken, "Approval").withArgs(owner.address, address2.address, 1000);
         const address2Allowance = await hoffCoinToken.allowance(owner.address, address2.address);
