@@ -2,6 +2,7 @@
  * @type import('hardhat/config').HardhatUserConfig
  */
  require("@nomiclabs/hardhat-etherscan");
+ require("solidity-coverage");
  require(`@nomiclabs/hardhat-waffle`);
  // https://hardhat.org/config/
  module.exports = {

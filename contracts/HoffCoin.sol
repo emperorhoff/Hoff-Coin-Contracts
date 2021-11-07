@@ -4,7 +4,13 @@ pragma solidity ^0.8.9;
 
 import "./ERC20.sol";
 
-contract HoffCoinBase is ERC20 {
+contract HoffCoinConfig is ERC20 {
+
+    string internal constant TOKEN_SYMBOL = "HOFF";
+    string internal constant TOKEN_NAME = "Hoff Coin";
+    uint8 internal constant TOKEN_DECIMALS = 8;
+    uint256 internal constant TOTAL_SUPPLY = 1000000000000000000;
+    address internal constant INITIAL_MINT_ADDRESS = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
     constructor(
         string memory _name,
@@ -21,17 +27,10 @@ contract HoffCoinBase is ERC20 {
     {}
 }
 
-contract HoffCoin is HoffCoinBase {
-    
-    string internal constant TOKEN_SYMBOL = "HOFF";
-    string internal constant TOKEN_NAME = "Hoff Coin";
-    uint8 internal constant TOKEN_DECIMALS = 8;
-    uint256 internal constant TOTAL_SUPPLY = 1000000000000000000;
-    address internal constant INITIAL_MINT_ADDRESS = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+contract HoffCoin is HoffCoinConfig {
 
-    
     constructor()
-        HoffCoinBase(
+        HoffCoinConfig(
             TOKEN_SYMBOL,
             TOKEN_NAME,
             TOKEN_DECIMALS,
