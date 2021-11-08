@@ -36,7 +36,7 @@
                  settings: {
                      optimizer: {
                          enabled: true,
-                         runs: 0
+                         runs: 10000
                      },
                      metadata: {
                          // do not include the metadata hash, since this is machine dependent
