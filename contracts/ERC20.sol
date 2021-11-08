@@ -54,7 +54,7 @@ contract ERC20 is IERC20, IERC20Metadata {
     /**
      * @dev Returns the name of the token.
      */
-    function name() public view virtual override returns (string memory) {
+    function name() public view virtual override returns (string memory name_) {
         return _name;
     }
 
@@ -62,7 +62,7 @@ contract ERC20 is IERC20, IERC20Metadata {
      * @dev Returns the symbol of the token, usually a shorter version of the
      * name.
      */
-    function symbol() public view virtual override returns (string memory) {
+    function symbol() public view virtual override returns (string memory symbol_) {
         return _symbol;
     }
 
@@ -79,21 +79,21 @@ contract ERC20 is IERC20, IERC20Metadata {
      * no way affects any of the arithmetic of the contract, including
      * {IERC20-balanceOf} and {IERC20-transfer}.
      */
-    function decimals() public view virtual override returns (uint8) {
+    function decimals() public view virtual override returns (uint8 decimals_) {
         return _decimals;
     }
 
     /**
      * @dev See {IERC20-totalSupply}.
      */
-    function totalSupply() public view virtual override returns (uint256) {
+    function totalSupply() public view virtual override returns (uint256 totalSupply_) {
         return _totalSupply;
     }
 
     /**
      * @dev See {IERC20-balanceOf}.
      */
-    function balanceOf(address account) public view virtual override returns (uint256) {
+    function balanceOf(address account) public view virtual override returns (uint256 balance_) {
         return _balances[account];
     }
 
@@ -105,15 +105,15 @@ contract ERC20 is IERC20, IERC20Metadata {
      * - `recipient` cannot be the zero address.
      * - the caller must have a balance of at least `amount`.
      */
-    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
-        _transfer(msg.sender, recipient, amount);
+    function transfer(address _recipient, uint256 _amount) public virtual override returns (bool _success) {
+        _transfer(msg.sender, _recipient, _amount);
         return true;
     }
 
     /**
      * @dev See {IERC20-allowance}.
      */
-    function allowance(address owner, address spender) public view virtual override returns (uint256) {
+    function allowance(address owner, address spender) public view virtual override returns (uint256 allowance_) {
         return _allowances[owner][spender];
     }
 
@@ -124,7 +124,7 @@ contract ERC20 is IERC20, IERC20Metadata {
      *
      * - `spender` cannot be the zero address.
      */
-    function approve(address spender, uint256 amount) public virtual override returns (bool) {
+    function approve(address spender, uint256 amount) public virtual override returns (bool result_) {
         _approve(msg.sender, spender, amount);
         return true;
     }
@@ -146,7 +146,7 @@ contract ERC20 is IERC20, IERC20Metadata {
         address sender,
         address recipient,
         uint256 amount
-    ) public virtual override returns (bool) {
+    ) public virtual override returns (bool result) {
         _transfer(sender, recipient, amount);
 
         uint256 currentAllowance = _allowances[sender][msg.sender];
