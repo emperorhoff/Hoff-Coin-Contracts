@@ -24,7 +24,7 @@ beforeEach(async function () {
     // Get the ContractFactory and Signers here.
     [owner, address1, address2, address3, address4] = await ethers.getSigners();
     
-    hoffCoinToken = await deployment(`HoffCoinConfig`, owner, ["Hoff Coin", "HOFF", "8", "1000000000000000000", owner.address]);
+    hoffCoinToken = await deployment(`contracts/HoffCoin.sol:HoffCoinConfig`, owner, ["Hoff Coin", "HOFF", "8", "1000000000000000000", owner.address]);
   });
 
   describe("Token contract", function () {
