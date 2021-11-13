@@ -4,9 +4,6 @@ const initialize = require(`./helpers/init`);
 const { 
     deployment,
     getAccounts,
-    randHexStr,
-    increaseTime,
-    randBetween
 } = require(`./helpers/utils`);
 const BigNumber = ethers.BigNumber;
 const Wallet = ethers.Wallet;
