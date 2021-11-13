@@ -60,3 +60,4 @@ then run the following command
 npx hardhat run scripts/deploy.js --network mainnet
 ```
 
+# Hoff-Coin-Contracts
